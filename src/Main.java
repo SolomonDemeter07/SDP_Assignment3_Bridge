@@ -1,10 +1,11 @@
 public class Main {
     public static void main(String[] args) {
         int passedCount = 0;
-        int totalChecks = 5; // Пока что 5 тестов (позже добавим T6 и T7)
+        int totalChecks = 7;
 
         Formatter textFmt = new TextFormatter();
         Formatter htmlFmt = new HtmlFormatter();
+        Formatter mdFmt = new MarkdownFormatter();
 
         Report a1_t1 = new AttendanceReport("R-ATT-01", textFmt, 3, 4);
         String resT1 = a1_t1.execute();
@@ -68,5 +69,31 @@ public class Main {
         }
 
         System.out.println("SUMMARY: " + passedCount + "/" + totalChecks + " PASS");
+
+
+
+        Report a1_t6 = new AttendanceReport("R-ATT-03", mdFmt, 3, 4);
+        String resT6 = a1_t6.execute();
+        String expT6 = "## Attendance Report\n**Attended: 3 out of 4 (75%)**";
+        if (resT6.equals(expT6)) {
+            System.out.println("T6 PASS | AttendanceReport + MarkdownFormatter | result=\n" + resT6);
+            passedCount++;
+        } else {
+            System.out.println("T6 FAIL | Expected:\n" + expT6 + "\nGot:\n" + resT6);
+        }
+
+
+        Report a2_t7 = new GradeReport("R-GRD-03", mdFmt, new int[]{70, 80, 90});
+        String resT7 = a2_t7.execute();
+        String expT7 = "## Grade Report\n**Average Grade: 80**";
+        if (resT7.equals(expT7)) {
+            System.out.println("T7 PASS | GradeReport + MarkdownFormatter | result=\n" + resT7);
+            passedCount++;
+        } else {
+            System.out.println("T7 FAIL | Expected:\n" + expT7 + "\nGot:\n" + resT7);
+        }
+
+        System.out.println("SUMMARY: " + passedCount + "/" + totalChecks + " PASS");
+
     }
 }
