@@ -62,7 +62,7 @@ public class Main {
 
         if (sameObject && stateUnchanged && !before.equals(after) && after.equals(expT2)) {
             System.out.println("T5 PASS | sameObject=" + sameObject + " | stateUnchanged=" + stateUnchanged);
-            System.out.println("before=" + before.replace("\n", " ") + " | after=" + after.replace("\n", " "));
+            System.out.println("before=" + before.replace("\n", " ") + " \nafter=" + after.replace("\n", " "));
             passedCount++;
         } else {
             System.out.println("T5 FAIL");
